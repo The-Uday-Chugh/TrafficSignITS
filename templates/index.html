@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Major Project | Vision-Based Traffic Sign Detection for ITS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+  <div class="page-bg" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a href="/" class="brand">
+      <img src="/static/img/pec.png" alt="PEC Logo" class="brand-logo" />
+      <span class="brand-name">
+        <span class="brand-pre">Major Project</span>
+        <span class="brand-sep">/</span>
+        <span class="brand-main">Vision-Based Traffic Sign Detection for ITS</span>
+      </span>
+    </a>
+    <button type="button" class="btn-back btn-back-header" id="btnBackHomeHeader" data-close-panel aria-label="Back to home" style="display: none;">← Home</button>
+  </header>
+
+  <!-- Home view -->
+  <main id="viewHome" class="view view-active">
+    <section class="hero">
+      <div class="hero-badge">AI-Powered Road Safety</div>
+      <p class="hero-desc">
+        AI-powered road sign recognition for safer smart mobility. Upload a scene,
+        detect signs instantly, and review confidence scores — built for Intelligent
+        Transport Systems.
+      </p>
+    </section>
+
+    <section class="feature-grid" aria-label="Main features">
+      <button type="button" class="feature-card" data-open="detect">
+        <span class="feature-icon feature-icon-text" aria-hidden="true">IMG</span>
+        <div class="feature-text">
+          <span class="feature-label">Check Image</span>
+          <span class="feature-hint">Upload & detect signs on this page</span>
+        </div>
+        <span class="feature-arrow" aria-hidden="true">→</span>
+      </button>
+
+      <a href="/signs" class="feature-card feature-link">
+        <span class="feature-icon feature-icon-text" aria-hidden="true">SIG</span>
+        <div class="feature-text">
+          <span class="feature-label">Supported Signs</span>
+          <span class="feature-hint">View all detectable sign classes</span>
+        </div>
+        <span class="feature-arrow" aria-hidden="true">→</span>
+      </a>
+
+      <a href="/developers" class="feature-card feature-link">
+        <span class="feature-icon feature-icon-text" aria-hidden="true">DEV</span>
+        <div class="feature-text">
+          <span class="feature-label">Developers</span>
+          <span class="feature-hint">Meet the project team</span>
+        </div>
+        <span class="feature-arrow" aria-hidden="true">→</span>
+      </a>
+    </section>
+  </main>
+
+  <section id="panelDetect" class="panel" hidden>
+    <div class="panel-head">
+      <div>
+        <h2>Check Image</h2>
+        <p class="panel-sub">Upload a road image and run YOLO detection</p>
+      </div>
+    </div>
+
+    <div class="detect-layout">
+      <div class="detect-controls card-glass">
+        <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp" hidden />
+
+        <div id="dropArea" class="drop-area">
+          <div class="drop-placeholder" id="dropPlaceholder">
+            <span class="drop-icon">⬆</span>
+            <p>Drag & drop an image here</p>
+            <p class="muted">or use the buttons below</p>
+          </div>
+          <img id="previewImg" class="preview-img" alt="Preview" hidden />
+        </div>
+
+        <div class="btn-row">
+          <button type="button" id="uploadBtn" class="btn btn-secondary">Upload image</button>
+          <button type="button" id="analyzeBtn" class="btn btn-primary" disabled>
+            <span id="analyzeLabel">Analyze image</span>
+          </button>
+        </div>
+        <p id="fileLabel" class="file-label">No image selected</p>
+        <p id="status" class="status" role="status"></p>
+        <div id="progressBarContainer" class="progress-bar-container" hidden>
+          <div id="progressBar" class="progress-bar"></div>
+        </div>
+      </div>
+
+      <div class="detect-results card-glass">
+        <h3>Detection results</h3>
+        <div id="resultsEmpty" class="empty-state">
+          <p>Results appear here after analysis.</p>
+        </div>
+        <div id="results" class="results-body" hidden>
+          <div class="result-badge" id="resultBadge">0 signs</div>
+          <div class="images-row">
+            <figure>
+              <figcaption>Original</figcaption>
+              <img id="imgOriginal" alt="Original upload" />
+            </figure>
+            <figure id="figAnnotated" hidden>
+              <figcaption>Annotated</figcaption>
+              <img id="imgAnnotated" alt="Detections drawn" />
+            </figure>
+          </div>
+          <ul id="detectionList" class="detection-list"></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <p>© 2026. AI-Powered Road Sign Recognition for Intelligent Transport Systems.</p>
+    <p class="footer-sub">Punjab Engineering College</p>
+  </footer>
+
+  <script src="/static/js/app.js"></script>
+</body>
+</html>

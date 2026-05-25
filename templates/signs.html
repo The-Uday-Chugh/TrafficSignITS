@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Supported Signs | Vision-Based Traffic Sign Detection for ITS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body class="page-signs">
+  <div class="page-bg" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a href="/" class="btn-back btn-back-header">← Home</a>
+  </header>
+
+  <main class="signs-main">
+    <section class="signs-hero">
+      <p class="hero-eyebrow">Model classes</p>
+      <h1>Supported Traffic Signs</h1>
+      <p class="hero-desc">
+        {{ total }} sign categories trained in the YOLO model. Each ID maps to a
+        real-world road sign type detected in your images.
+      </p>
+    </section>
+
+    <ol class="signs-grid">
+      {% for c in classes %}
+      <li class="sign-card">
+        <span class="sign-num">{{ '%02d' % (c.id + 1) }}</span>
+        <div class="sign-body">
+          <span class="sign-name">{{ c.name }}</span>
+          <span class="sign-id">Class ID {{ c.id }}</span>
+        </div>
+      </li>
+      {% endfor %}
+    </ol>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026. AI-Powered Road Sign Recognition for Intelligent Transport Systems.</p>
+    <p class="footer-sub">Punjab Engineering College</p>
+  </footer>
+
+</body>
+</html>

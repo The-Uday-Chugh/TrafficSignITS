@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Developers | Vision-Based Traffic Sign Detection for ITS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body class="page-developers">
+  <div class="page-bg" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a href="/" class="btn-back btn-back-header">← Home</a>
+  </header>
+
+  <main class="developers-main">
+    <section class="signs-hero">
+      <p class="hero-eyebrow">Project team</p>
+      <h1>Developers</h1>
+      <p class="hero-desc">
+        Built by the team below.
+      </p>
+    </section>
+
+    <div class="developers-grid">
+      {% for dev in developers %}
+      <article class="dev-card">
+        <div class="dev-photo-wrap">
+          <img
+            class="dev-photo"
+            src="{{ dev.photo }}"
+            alt="{{ dev.name }}"
+            loading="lazy"
+            onload="this.nextElementSibling.style.display='none'"
+            onerror="this.style.display='none'"
+          />
+          <div class="dev-fallback">{{ dev.initials }}</div>
+        </div>
+        <h2 class="dev-name">{{ dev.name }}</h2>
+      </article>
+      {% endfor %}
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026. AI-Powered Road Sign Recognition for Intelligent Transport Systems.</p>
+    <p class="footer-sub">Punjab Engineering College</p>
+  </footer>
+
+</body>
+</html>
